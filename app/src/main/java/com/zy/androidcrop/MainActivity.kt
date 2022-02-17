@@ -95,10 +95,10 @@ class MainActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             //通过FileProvider获取uri
             takePhotoSaveAdr = FileProvider.getUriForFile(this@MainActivity,
-                    "com.zy.androidcrop", File(Environment.getExternalStorageDirectory(), "head.jpg"))
+                    "com.zy.androidcrop", File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "head.jpg"))
             intent.putExtra(MediaStore.EXTRA_OUTPUT, takePhotoSaveAdr)
         } else {
-            mImageCaptureUri = Uri.fromFile(File(Environment.getExternalStorageDirectory(), "head.jpg"))
+            mImageCaptureUri = Uri.fromFile(File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "head.jpg"))
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageCaptureUri)
         }
         startActivityForResult(intent, PHOTO_TAKEPHOTO)
@@ -148,10 +148,10 @@ class MainActivity : AppCompatActivity() {
                 uriClipUri = uri
             } else { //如果是7.0的相册
                 //设置裁剪的图片地址Uri
-                uriClipUri = Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().path + "/" + "head.jpg")
+                uriClipUri = Uri.parse("file://" + "/" + getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.path + "/" + "head.jpg")
             }
         } else {
-            uriClipUri = Uri.parse("file://" + "/" + Environment.getExternalStorageDirectory().path + "/" + "head.jpg")
+            uriClipUri = Uri.parse("file://" + "/" + getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.path + "/" + "head.jpg")
         }
         Log.e("uriClipUri=====", "" + uriClipUri)
         //Android 对Intent中所包含数据的大小是有限制的，一般不能超过 1M，否则会使用缩略图 ,所以我们要指定输出裁剪的图片路径

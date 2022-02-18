@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity() {
                     optionsa.error(R.mipmap.ic_launcher_round) //异常显示图
                     optionsa.diskCacheStrategy(DiskCacheStrategy.NONE) //禁用掉Glide的缓存功能
                     optionsa.skipMemoryCache(true) //禁用掉Glide的内存缓存
-                    //显示页面上
+                    //裁剪后图片路径：显示页面上，也可以做些其它操作比如压缩后上传等等
                     if (imageCropFile != null && imageCropFile!!.absolutePath != null) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                             if (CropFileUtils.uri != null) {

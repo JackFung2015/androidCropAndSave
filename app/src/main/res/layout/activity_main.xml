@@ -6,22 +6,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/galleryBtn"
-        android:text="图库"/>
-    <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="图库" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cameraBtn"
-        android:text="相机"/>
-   <ImageView
-       android:id="@+id/headImg"
-       android:src="@drawable/ic_launcher_background"
-       android:layout_width="150dp"
-       android:layout_height="150dp"
-       android:layout_marginTop="100dp"
-       android:layout_gravity="center_horizontal"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="相机" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/headImg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_launcher_background" />
 
 </LinearLayout>

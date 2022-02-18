@@ -128,6 +128,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent("com.android.camera.action.CROP")//com.android.camera.action.CROP，这个action是调用系统自带的图片裁切功能
         intent.setDataAndType(uri, "image/*") //裁剪的图片uri和图片类型
         intent.putExtra("crop", "true") //设置允许裁剪，如果不设置，就会跳过裁剪的过程，还可以设置putExtra("crop", "circle")
+        //设置aspectX 与 aspectY 后，裁剪框会按照所指定的比例出现，放大缩小都不会更改。如果不指定，那么 裁剪框就可以随意调整了。
         intent.putExtra("aspectX", 1) //裁剪框的 X 方向的比例,需要为整数
         intent.putExtra("aspectY", 1) //裁剪框的 Y 方向的比例,需要为整数
         intent.putExtra("outputX", 500) //返回数据的时候的X像素大小。
@@ -154,11 +155,11 @@ class MainActivity : AppCompatActivity() {
             uriClipUri = Uri.parse("file://" + "/" + getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.path + "/" + "head.jpg")
         }
         Log.e("uriClipUri=====", "" + uriClipUri)
-        //Android 对Intent中所包含数据的大小是有限制的，一般不能超过 1M，否则会使用缩略图 ,所以我们要指定输出裁剪的图片路径
+        //向intent传入 MediaStore.EXTRA_OUTPUT参数后，表明这是一个存储动作
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uriClipUri)
         intent.putExtra("return-data", false) //是否将数据保留在Bitmap中返回
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString()) //输出格式，一般设为Bitmap格式及图片类型
-        intent.putExtra("noFaceDetection", false) //人脸识别功能
+        intent.putExtra("noFaceDetection", true) //是否去除面部检测
         startActivityForResult(intent, PHOTO_PHOTOCLIP) //裁剪完成的标识
     }
 
